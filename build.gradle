@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id'application'
+    id'com.github.johnrengelman.shadow' version '6.0.0'
+}
+mainClassName = 'dev.unzor.customRPC.Main'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        name = "jitpack.io"
+        url = "https://jitpack.io"
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'club.minnced:java-discord-rpc:2.0.2'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation files('lib/miglayout-swing.jar')
+    implementation files('lib/miglayout-core.jar')
+    implementation group: 'com.formdev', name: 'flatlaf', version: '1.1.2'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+    implementation"ch.qos.logback:logback-classic:1.2.3"
+}
+
+shadowJar {
+    archiveBaseName.set('CustomRPC')
+    archiveClassifier.set('release')
+    archiveVersion.set('1.0')
+}
+
+test {
+    useJUnitPlatform()
+}

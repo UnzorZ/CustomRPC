@@ -1,0 +1,182 @@
+JFDML JFormDesigner: "7.0.5.3.411" Java: "11.0.14" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space :0:0:x, comp label8:::p::p, space :p:1872:p}, seq {space :p:162:p, par l {seq l {space :p:8:p, comp label1:::p::p}, comp label7::l:p:98:p}, space s:::p, comp StatusLabel:::p::p, space :0:0:x}, seq {space :p:14:p, par t:::p {seq l {comp label9:::p::p, space :::p, comp textField7:::p:97:p, space s:::p, comp App_IDLabel:::p::p, space s:::p, comp AppIDField2::::152:x}, par l {comp label6::l:p:113:p, par t:l::p {comp button1::l::406:x, comp button2::t::406:x, comp button3::t::406:x, par l:t {comp textField5:::p:297:p, comp textField6:::p:299:p}}, par t:l::p {seq l {comp label2:::p::p, space :::p, comp textField1:::::x}, seq l {comp label3:::p::p, space u:::p, comp textField2:::::x}, seq l {comp label5:::p::p, space :::p, comp textField4:::::x}, seq l {comp label4:::p:103:p, space :::p, comp textField3:::p:296:p}}, comp warninglabel::l:p::p}}, space :::x, comp label10:::p::p, space :::p, comp textField8:::p::p, space :p:69:p}}"
+			"$verticalGroup": "par l {seq l {par l {seq {space :p:8:p, comp label1:::p::p, space :::p, comp label7:::p::p}, seq l {space :p:19:p, comp StatusLabel:::p::p}}, space :p:46:p, par b {comp label2::b:p::p, comp textField1::b:p::p}, space u:::p, par b {comp label3::b:p::p, comp textField2::b:p::p}, space s:::p, par b {comp label4::b:p::p, comp textField3::b:p::p}, space s:::p, par b {comp label5::b:p::p, comp textField4::b:p::p}, space s:::p, par b {comp label6::b:p::p, comp textField5::b:p::p}, space s:::p, par b {comp label8::b:p::p, comp textField6::b:p::p}, space s:::p, par b {comp label9::b:p::p, comp label10::b:p::p, comp textField8::b:p::p, comp textField7::b:p::p, comp App_IDLabel::b:p::p, comp AppIDField2::b:p::p}, space :p:18:p, comp button1:::p::p, space u:::p, comp button2:::p::p, space u:::p, comp button3:::p::p, space s:::p, comp warninglabel:::p::p, space ::23:x}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Custom RPC    "
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "TitleLabel"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+					"JavaCodeGenerator.variableName": "FirstLineField"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "First Line:"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "FirstLineLabel"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Second Line:"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "SecondLineLabel"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField2"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "SecondLineField"
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Large Image Name:"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "LargeImageLabel"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField3"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "LargeImageField"
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Large Image Text:"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "LargeImageTextLabel"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField4"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "LargeImageTextField"
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "Small Image Name:"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "SmallImageNameLabel"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField5"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "SmallImageNameField"
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": " Made By Unzor"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "SubtitleLabel"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"text": "Small Image Text:"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "SmallImageTextLabel"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField6"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "SmallImageTextField"
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label9"
+				"text": "Update Delay:"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "UpdateDelayLabel"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField7"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "UpdateDelayField"
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label10"
+				"text": "App ID:"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "AppIDLabel"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField8"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "AppIDField"
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Start"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "Start"
+				}
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Start", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "start", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Save Config"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "SaveConfig"
+				}
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "saveConfig", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button3"
+				"text": "Stop"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "Stop"
+				}
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "stop", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "StatusLabel"
+				"text": "Status: "
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "App_IDLabel"
+				"text": "App ID: "
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "AppIDField2"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "warninglabel"
+				"text": "Warning: "
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 45, 45 )
+			"size": new java.awt.Dimension( 460, 565 )
+		} )
+	}
+}
