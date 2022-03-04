@@ -1,0 +1,7 @@
+/build/
+/.idea/
+/.gradle/
+/gradle/
+/lib/
+/src/test/
+/src/main/resources/
