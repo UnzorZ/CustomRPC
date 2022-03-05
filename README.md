@@ -1,4 +1,5 @@
-#CustomRPC Changer
+CustomRPC Changer
+======================
 
 
 CustomRPC is a tool that allows you to change your discord rich presence (RPC) to a custom one. It also allows creating sentence sequences 
