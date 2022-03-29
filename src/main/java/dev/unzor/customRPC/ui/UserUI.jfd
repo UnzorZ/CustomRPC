@@ -1,11 +1,11 @@
-JFDML JFormDesigner: "7.0.5.3.411" Java: "11.0.14" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.1.409" Java: "11.0.14" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space :0:0:x, comp label8:::p::p, space :p:1872:p}, seq {space :p:162:p, par l {seq l {space :p:8:p, comp label1:::p::p}, comp label7::l:p:98:p}, space s:::p, comp StatusLabel:::p::p, space :0:0:x}, seq {space :p:14:p, par t:::p {seq l {comp label9:::p::p, space :::p, comp textField7:::p:97:p, space s:::p, comp App_IDLabel:::p::p, space s:::p, comp AppIDField2::::152:x}, par l {comp label6::l:p:113:p, par t:l::p {comp button1::l::406:x, comp button2::t::406:x, comp button3::t::406:x, par l:t {comp textField5:::p:297:p, comp textField6:::p:299:p}}, par t:l::p {seq l {comp label2:::p::p, space :::p, comp textField1:::::x}, seq l {comp label3:::p::p, space u:::p, comp textField2:::::x}, seq l {comp label5:::p::p, space :::p, comp textField4:::::x}, seq l {comp label4:::p:103:p, space :::p, comp textField3:::p:296:p}}, comp warninglabel::l:p::p}}, space :::x, comp label10:::p::p, space :::p, comp textField8:::p::p, space :p:69:p}}"
-			"$verticalGroup": "par l {seq l {par l {seq {space :p:8:p, comp label1:::p::p, space :::p, comp label7:::p::p}, seq l {space :p:19:p, comp StatusLabel:::p::p}}, space :p:46:p, par b {comp label2::b:p::p, comp textField1::b:p::p}, space u:::p, par b {comp label3::b:p::p, comp textField2::b:p::p}, space s:::p, par b {comp label4::b:p::p, comp textField3::b:p::p}, space s:::p, par b {comp label5::b:p::p, comp textField4::b:p::p}, space s:::p, par b {comp label6::b:p::p, comp textField5::b:p::p}, space s:::p, par b {comp label8::b:p::p, comp textField6::b:p::p}, space s:::p, par b {comp label9::b:p::p, comp label10::b:p::p, comp textField8::b:p::p, comp textField7::b:p::p, comp App_IDLabel::b:p::p, comp AppIDField2::b:p::p}, space :p:18:p, comp button1:::p::p, space u:::p, comp button2:::p::p, space u:::p, comp button3:::p::p, space s:::p, comp warninglabel:::p::p, space ::23:x}}"
+			"$horizontalGroup": "par l {seq l {space :p:14:p, par l {seq l {space :p:264:p, comp label1:::::x, space :269:269:p}, seq l {space :p:255:p, comp label7:::::x, space :259:259:p}, seq {par l {seq l {par l {comp label6:::p::p, comp label8:::p::p}, space u:::p, par l:::p {comp textField5::::290:x, comp textField6::::290:x}}, par t:::p {seq l {comp label9:::p::p, space :::p, comp textField7:::p:97:p, space s:::p, comp App_IDLabel:::p::p, space s:::p, comp AppIDField2:::::x}, seq l {comp label2:::p::p, space :::p, comp textField1:::::x}, seq l {comp label3:::p::p, space u:::p, comp textField2:::::x}, seq l {comp label5:::p::p, space :::p, comp textField4:::::x}, seq l {comp label4:::p:103:p, space :::p, comp textField3:::p:296:p}}}, space :p:27:p, par l:::p {seq {par l:::p {comp sequencesmallimagetext:::::x, comp sequencesmallimagename:::::x, comp sequencelargeimagetext::t:::x, comp sequencelargeimagename::t:::x, comp sequencesecondline::t:::x, comp sequencefirstline::t:::x}, par l {seq {space :p:14:p, comp delaylabel2:::p::p, space :::p, comp delayfirstlinefield:::p::p}, seq l {space u:::p, par l {seq {comp delaylabel4:::p::p, space :::p, comp delaylargeimagename:::p::p}, seq {comp delaylabel3:::p::p, space :::p, comp delaysecondline:::p::p}, seq l {comp delaylabel5:::p::p, space :::p, comp delaylargeimagetext:::p::p}, seq l {comp delaylabel6:::p::p, space :::p, comp delaysmallimageimagename:::p::p}, seq l {comp delaylabel7:::p::p, space :::p, comp delaysmallimagetext:::p::p}}}}}, seq {comp button4:::::x, space :p:4:p}}}, par t {comp button3::t:p:608:p, par t:::p {comp button2::l::608:x, comp button1::l::608:x}}, comp warninglabel::l:p::p, seq l {comp StatusLabel:::::x, space :574:574:p}}, space :p:14:p}}"
+			"$verticalGroup": "par l {seq l {space :p:8:p, comp label1:::::x, space :p::p, comp label7:::::x, space :p:18:p, comp StatusLabel:::::x, space u:p::p, par b {comp label2::b:p::p, comp textField1::b:p::p, comp sequencefirstline::b:p::p, comp delaylabel2::b:p::p, comp delayfirstlinefield::b:p::p}, space u:p::p, par b {comp label3::b:p::p, comp textField2::b:p::p, comp sequencesecondline::b:p::p, comp delaylabel3::b:p::p, comp delaysecondline::b:p::p}, space s:p::p, par b {comp label4::b:p::p, comp textField3::b:p::p, comp sequencelargeimagename::b:p::p, comp delaylabel4::b:p::p, comp delaylargeimagename::b:p::p}, space s:p::p, par b {comp label5::b:p::p, comp textField4::b:p::p, comp sequencelargeimagetext::b:p::p, comp delaylabel5::b:p::p, comp delaylargeimagetext::b:p::p}, space s:p::p, par b {comp sequencesmallimagename::b:p::p, comp delaylabel6::b:p::p, comp delaysmallimageimagename::b:p::p, comp label6::b:p::p, comp textField5::b:p::p}, space s:p::p, par b {comp sequencesmallimagetext::b:p::p, comp delaylabel7::b:p::p, comp delaysmallimagetext::b:p::p, comp label8::b:p::p, comp textField6::b:p::p}, space s:p::p, par b {comp label9::b:p::p, comp textField7::b:p::p, comp App_IDLabel::b:p::p, comp AppIDField2::b:p::p, comp button4::b:p::p}, space :p:18:p, comp button1:::p::p, space u:p::p, comp button2:::p::p, space u:p::p, comp button3:::p::p, space u:p::p, comp warninglabel:::p::p, space :p:25:p}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -120,27 +120,12 @@ new FormModel {
 					"JavaCodeGenerator.variableModifiers": 1
 				}
 			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label10"
-				"text": "App ID:"
-				auxiliary() {
-					"JavaCodeGenerator.variableName": "AppIDLabel"
-				}
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField8"
-				auxiliary() {
-					"JavaCodeGenerator.variableName": "AppIDField"
-					"JavaCodeGenerator.variableModifiers": 1
-				}
-			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button1"
 				"text": "Start"
 				auxiliary() {
 					"JavaCodeGenerator.variableName": "Start"
 				}
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Start", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "start", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -174,9 +159,113 @@ new FormModel {
 				name: "warninglabel"
 				"text": "Warning: "
 			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "sequencefirstline"
+				"text": "Sequence"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "delaylabel2"
+				"text": "Delay:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "delayfirstlinefield"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "sequencesecondline"
+				"text": "Sequence"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "sequencelargeimagename"
+				"text": "Sequence"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "sequencelargeimagetext"
+				"text": "Sequence"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "sequencesmallimagename"
+				"text": "Sequence"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "sequencesmallimagetext"
+				"text": "Sequence"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "delaylabel3"
+				"text": "Delay:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "delaylabel4"
+				"text": "Delay:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "delaylabel5"
+				"text": "Delay:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "delaylabel6"
+				"text": "Delay:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "delaylabel7"
+				"text": "Delay:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "delaysecondline"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "delaylargeimagename"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "delaylargeimagetext"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "delaysmallimageimagename"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "delaysmallimagetext"
+				auxiliary() {
+					"JavaCodeGenerator.variableModifiers": 1
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button4"
+				"text": "Force Update"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "forceUpdate", true ) )
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 45, 45 )
-			"size": new java.awt.Dimension( 460, 565 )
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 640, 565 )
 		} )
 	}
 }

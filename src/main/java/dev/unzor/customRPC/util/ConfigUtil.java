@@ -4,7 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,6 +28,18 @@ public class ConfigUtil {
         configObject.addProperty("SmallImageName", Constants.smallimagename);
         configObject.addProperty("SmallImageText", Constants.smallimagetext);
         configObject.addProperty("StartTimestamp", Constants.startTimestamp);
+        configObject.addProperty("SequenceFirstLine", Constants.sequencefirstline);
+        configObject.addProperty("SequenceSecondLine", Constants.sequencesecondline);
+        configObject.addProperty("SequenceLargeImageName", Constants.sequencesecondline);
+        configObject.addProperty("SequenceLargeImageText", Constants.sequencelargeimagetext);
+        configObject.addProperty("SequenceSmallImageName", Constants.sequencesmallimagename);
+        configObject.addProperty("SequenceSmallImageText", Constants.sequencesmallimagetext);
+        configObject.addProperty("DelaySequenceFirstLine", Constants.delaysequencefirstline);
+        configObject.addProperty("DelaySequenceSecondLine", Constants.delaysequencesecondline);
+        configObject.addProperty("DelaySequenceLargeImageName", Constants.delaysequencelargeimagename);
+        configObject.addProperty("DelaySequenceLargeImageText", Constants.delaysequencelargeimagetext);
+        configObject.addProperty("DelaySequenceSmallImageText", Constants.delaysequencesmallimagetext);
+        configObject.addProperty("DelaySequenceSmallImageName", Constants.delaysequencesmallimagename);
 
         OutputStreamWriter fileOutputStreamWriter = new OutputStreamWriter(Files.newOutputStream(configFile.toPath()));
         fileOutputStreamWriter.write(gson.toJson(configObject));
@@ -44,6 +59,18 @@ public class ConfigUtil {
         Constants.smallimagename = configObject.get("SmallImageName").getAsString();
         Constants.smallimagetext = configObject.get("SmallImageText").getAsString();
         Constants.startTimestamp = configObject.get("StartTimestamp").getAsInt();
+        Constants.sequencefirstline = configObject.get("SequenceFirstLine").getAsBoolean();
+        Constants.sequencesecondline = configObject.get("SequenceSecondLine").getAsBoolean();
+        Constants.sequencelargeimagename = configObject.get("SequenceLargeImageName").getAsBoolean();
+        Constants.sequencelargeimagetext = configObject.get("SequenceLargeImageText").getAsBoolean();
+        Constants.sequencesmallimagename = configObject.get("SequenceSmallImageName").getAsBoolean();
+        Constants.sequencesmallimagetext = configObject.get("SequenceSmallImageText").getAsBoolean();
+        Constants.delaysequencefirstline = configObject.get("DelaySequenceFirstLine").getAsInt();
+        Constants.delaysequencesecondline = configObject.get("DelaySequenceSecondLine").getAsInt();
+        Constants.delaysequencelargeimagename = configObject.get("DelaySequenceLargeImageName").getAsInt();
+        Constants.delaysequencelargeimagetext = configObject.get("DelaySequenceLargeImageText").getAsInt();
+        Constants.delaysequencesmallimagetext = configObject.get("DelaySequenceSmallImageText").getAsInt();
+        Constants.delaysequencesmallimagename = configObject.get("DelaySequenceSmallImageName").getAsInt();
     }
 
 
