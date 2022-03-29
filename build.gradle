@@ -29,7 +29,7 @@ dependencies {
 shadowJar {
     archiveBaseName.set('CustomRPC')
     archiveClassifier.set('release')
-    archiveVersion.set('1.0')
+    archiveVersion.set('1.1')
 }
 
 test {
