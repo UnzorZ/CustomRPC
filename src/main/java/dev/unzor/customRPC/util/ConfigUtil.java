@@ -40,6 +40,7 @@ public class ConfigUtil {
         configObject.addProperty("DelaySequenceLargeImageText", Constants.delaysequencelargeimagetext);
         configObject.addProperty("DelaySequenceSmallImageText", Constants.delaysequencesmallimagetext);
         configObject.addProperty("DelaySequenceSmallImageName", Constants.delaysequencesmallimagename);
+        configObject.addProperty("Timer", Constants.timerunning);
 
         OutputStreamWriter fileOutputStreamWriter = new OutputStreamWriter(Files.newOutputStream(configFile.toPath()));
         fileOutputStreamWriter.write(gson.toJson(configObject));
@@ -71,6 +72,7 @@ public class ConfigUtil {
         Constants.delaysequencelargeimagetext = configObject.get("DelaySequenceLargeImageText").getAsInt();
         Constants.delaysequencesmallimagetext = configObject.get("DelaySequenceSmallImageText").getAsInt();
         Constants.delaysequencesmallimagename = configObject.get("DelaySequenceSmallImageName").getAsInt();
+        Constants.timerunning = configObject.get("Timer").getAsBoolean();
     }
 
 

@@ -4,6 +4,7 @@ public class Constants {
 
     public static String applicationid = "";
     public static int updatedelay = 2000;
+    public static boolean timerunning;
 
     public static String firstline = "";
     public static String secondline = "";

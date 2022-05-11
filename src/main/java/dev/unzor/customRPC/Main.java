@@ -16,7 +16,7 @@ public class Main extends JPanel{
         UserUI ui = new UserUI();
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(700, 575);
+        frame.setSize(625, 590);
         frame.setTitle("CustomRPC");
         frame.add(ui);
         frame.setVisible(true);

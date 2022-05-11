@@ -14,12 +14,13 @@ import javax.swing.*;
 import javax.swing.GroupLayout;
 
 /**
- * @author unknown
+ * @author Unzor
  */
 public class UserUI extends JPanel {
     public UserUI() {
         initComponents();
         warninglabel.setVisible(false);
+        TimerLabel2.setVisible(false);
         FirstLineField.setText(Constants.firstline);
         SecondLineField.setText(Constants.secondline);
         LargeImageField.setText(Constants.largeimagename);
@@ -70,6 +71,7 @@ public class UserUI extends JPanel {
 
     private void start(ActionEvent e) {
         warninglabel.setVisible(false);
+        TimerLabel2.setVisible(false);
         if (FirstLineField.getText().length()>128) {
             warninglabel.setVisible(true);
             warninglabel.setText("Warning: maximum characters exceeded in First Line");
@@ -98,6 +100,11 @@ public class UserUI extends JPanel {
             warninglabel.setVisible(true);
             warninglabel.setText("Warning: no application ID");
             return;
+        } else if (Constants.timerunning) {
+            TimerLabel2.setVisible(true);
+            TimerLabel2.setText("Timer: running");
+        } else if (!Constants.timerunning) {
+            TimerLabel2.setVisible(false);
         }
         RPCUtil.boot();
         StatusLabel.setText("Status: enabled");
@@ -112,9 +119,21 @@ public class UserUI extends JPanel {
         RPCUtil.setPresence();
     }
 
+    private void Timer(ActionEvent e) {
+        System.out.println("Timer enabled/disabled");
+        if (!Constants.timerunning) {
+            Constants.timerunning = true;
+            TimerLabel2.setVisible(true);
+            TimerLabel2.setText("Timer: running");
+            RPCUtil.richPresence.startTimestamp = System.currentTimeMillis() / 1000L;
+        } else if (Constants.timerunning) {
+            Constants.timerunning = false;
+            TimerLabel2.setVisible(false);
+            RPCUtil.richPresence.startTimestamp = 0;
+        }
+    }
+
 private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unzor
         TitleLabel = new JLabel();
         FirstLineField = new JTextField();
         FirstLineLabel = new JLabel();
@@ -157,9 +176,10 @@ private void initComponents() {
         delaysmallimageimagename = new JTextField();
         delaysmallimagetext = new JTextField();
         button4 = new JButton();
+        TimerButton = new JButton();
+        TimerLabel2 = new JLabel();
 
         //======== this ========
-
 
         //---- TitleLabel ----
         TitleLabel.setText("Custom RPC    ");
@@ -198,7 +218,7 @@ private void initComponents() {
             try {
                 saveConfig(e);
             } catch (IOException ex) {
-                throw new RuntimeException(ex);
+                ex.printStackTrace();
             }
         });
 
@@ -255,182 +275,194 @@ private void initComponents() {
         button4.setText("Force Update");
         button4.addActionListener(e -> forceUpdate(e));
 
+        //---- TimerButton ----
+        TimerButton.setText("Switch timer mode");
+        TimerButton.addActionListener(e -> Timer(e));
+
+        //---- TimerLabel2 ----
+        TimerLabel2.setText("Timer:  ");
+
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
+                    .addGap(272, 272, 272)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addComponent(TitleLabel)
+                        .addComponent(SubtitleLabel))
+                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
                     .addGap(14, 14, 14)
-                    .addGroup(layout.createParallelGroup()
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(264, 264, 264)
-                            .addComponent(TitleLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(269, 269, 269))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(255, 255, 255)
-                            .addComponent(SubtitleLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(259, 259, 259))
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addComponent(button4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Stop, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SaveConfig, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Start, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(UpdateDelayLabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(UpdateDelayField, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(App_IDLabel)
+                            .addGap(18, 18, 18)
+                            .addComponent(AppIDField2))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup()
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup()
-                                        .addComponent(SmallImageNameLabel)
-                                        .addComponent(SmallImageTextLabel))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(SmallImageNameField, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                                        .addComponent(SmallImageTextField, GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)))
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(UpdateDelayLabel)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(UpdateDelayField, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(App_IDLabel)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(AppIDField2))
-                                    .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(FirstLineLabel)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(FirstLineField))
-                                    .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(SecondLineLabel)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(SecondLineField))
-                                    .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(LargeImageTextLabel)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(LargeImageTextField))
-                                    .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(LargeImageLabel, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(LargeImageField, GroupLayout.PREFERRED_SIZE, 296, GroupLayout.PREFERRED_SIZE))))
-                            .addGap(27, 27, 27)
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(sequencesmallimagetext, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(sequencesmallimagename, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(sequencelargeimagetext, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(sequencelargeimagename, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(sequencesecondline, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(sequencefirstline, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(FirstLineLabel))
                                     .addGroup(layout.createParallelGroup()
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGap(14, 14, 14)
-                                            .addComponent(delaylabel2)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(delayfirstlinefield, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
                                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addGroup(layout.createParallelGroup()
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(delaylabel4)
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(delaylargeimagename, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(delaylabel3)
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(delaysecondline, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(delaylabel5)
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(delaylargeimagetext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(delaylabel6)
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(delaysmallimageimagename, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(delaylabel7)
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(delaysmallimagetext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(FirstLineField))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(12, 12, 12)
+                                            .addComponent(SecondLineField))))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(button4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGap(4, 4, 4))))
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(Stop, GroupLayout.PREFERRED_SIZE, 608, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(SaveConfig, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
-                                .addComponent(Start, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)))
-                        .addComponent(warninglabel)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(StatusLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(574, 574, 574)))
-                    .addGap(14, 14, 14))
+                                    .addComponent(LargeImageLabel, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(LargeImageField))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(LargeImageTextLabel)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(LargeImageTextField))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup()
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup()
+                                                .addComponent(SmallImageNameLabel)
+                                                .addComponent(SmallImageTextLabel))
+                                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                .addComponent(SmallImageTextField, GroupLayout.PREFERRED_SIZE, 259, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(SmallImageNameField, GroupLayout.PREFERRED_SIZE, 253, GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(StatusLabel, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(warninglabel, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup()
+                                .addComponent(TimerButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup()
+                                        .addComponent(TimerLabel2, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(sequencelargeimagename)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaylabel4)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaylargeimagename, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(sequencelargeimagetext)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaylabel5)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaylargeimagetext, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(sequencesecondline)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaylabel3)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaysecondline, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(sequencefirstline)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaylabel2)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delayfirstlinefield, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(sequencesmallimagetext)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaylabel7)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaysmallimagetext, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(sequencesmallimagename)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaylabel6)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(delaysmallimageimagename, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(0, 0, Short.MAX_VALUE)))))
+                    .addGap(215, 215, 215))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(8, 8, 8)
-                    .addComponent(TitleLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()
+                    .addComponent(TitleLabel, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(SubtitleLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(18, 18, 18)
-                    .addComponent(StatusLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SubtitleLabel)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(TimerLabel2)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(TimerButton))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(warninglabel)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(StatusLabel)))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(FirstLineLabel)
-                        .addComponent(FirstLineField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(sequencefirstline)
+                        .addComponent(FirstLineField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(delaylabel2)
                         .addComponent(delayfirstlinefield, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(SecondLineLabel)
-                        .addComponent(SecondLineField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(sequencesecondline)
+                        .addComponent(SecondLineField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(delaylabel3)
                         .addComponent(delaysecondline, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(LargeImageLabel)
-                        .addComponent(LargeImageField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(sequencelargeimagename)
+                        .addComponent(LargeImageField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(delaylabel4)
                         .addComponent(delaylargeimagename, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(LargeImageTextLabel)
-                        .addComponent(LargeImageTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(sequencelargeimagetext)
+                        .addComponent(LargeImageTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(delaylabel5)
                         .addComponent(delaylargeimagetext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(sequencesmallimagename)
-                        .addComponent(delaylabel6)
-                        .addComponent(delaysmallimageimagename, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(SmallImageNameLabel)
-                        .addComponent(SmallImageNameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sequencesmallimagename)
+                        .addComponent(SmallImageNameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(delaylabel6)
+                        .addComponent(delaysmallimageimagename, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(sequencesmallimagetext)
-                        .addComponent(delaylabel7)
-                        .addComponent(delaysmallimagetext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(SmallImageTextLabel)
-                        .addComponent(SmallImageTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sequencesmallimagetext)
+                        .addComponent(SmallImageTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(delaylabel7)
+                        .addComponent(delaysmallimagetext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(UpdateDelayLabel)
-                        .addComponent(UpdateDelayField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(App_IDLabel)
                         .addComponent(AppIDField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(button4))
-                    .addGap(18, 18, 18)
+                        .addComponent(UpdateDelayField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(24, 24, 24)
                     .addComponent(Start)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(SaveConfig)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(Stop)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(warninglabel)
-                    .addGap(25, 25, 25))
+                    .addGap(7, 7, 7)
+                    .addComponent(button4)
+                    .addContainerGap())
         );
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unzor
     private JLabel TitleLabel;
     public JTextField FirstLineField;
     private JLabel FirstLineLabel;
@@ -473,5 +505,6 @@ private void initComponents() {
     public JTextField delaysmallimageimagename;
     public JTextField delaysmallimagetext;
     private JButton button4;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+    private JButton TimerButton;
+    private JLabel TimerLabel2;
 }
